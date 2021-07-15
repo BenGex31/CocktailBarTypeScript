@@ -2,7 +2,9 @@ import React /*useContext*/ from "react";
 import "./CocktailCard.scss";
 //import { CocktailContext } from "../../App";
 import { Icocktail } from "../../model/Cocktail";
+import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 interface IcocktailCard {
   cocktail: Icocktail;
@@ -15,6 +17,11 @@ export function CocktailCard(props: IcocktailCard): JSX.Element {
       className="cocktailCard"
       onClick={() => props.openForm(props.cocktail)}
     >
+      <Checkbox
+        icon={<FavoriteBorder />}
+        checkedIcon={<Favorite />}
+        name="checkedH"
+      />
       <img
         className="cocktailImg"
         alt={props.cocktail.name}
