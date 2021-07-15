@@ -1,13 +1,18 @@
-.cocktailCard {
+.cocktailCardContainer {
   transition: all 0.4s ease-in-out 0s;
   height: 23em;
   width: 15em;
   border: 1px solid black;
+  background-color: #d2d5cd;
+  margin: 3px;
+  position: relative;
+}
+
+.cocktailCard {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0.2em;
-  background-color: #d2d5cd;
   padding: 5px;
 }
 
@@ -33,7 +38,7 @@
   background-color: gray
 }
 
-.cocktailCard:hover {
+.cocktailCardContainer:hover {
   box-shadow: 10px 5px 10px black;
   opacity: 0.7;
   transform: translate(0, -0.2em);
