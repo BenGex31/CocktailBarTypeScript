@@ -1,0 +1,45 @@
+.cocktailForm {
+  position: relative;
+  flex: 1;
+}
+
+.cocktailForm .buttonFormModal {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.buttonFormModal button {
+  margin: 5px;
+}
+
+.CocktailName {
+  font-size: 60px;
+  text-align: center;
+  background-color: #216983;
+  color: #eaeaea;
+}
+
+.beachImg {
+  width: 100%;
+  height: 250px;
+}
+
+.CocktailFormImages {
+  position: relative;
+  margin-top: 50px;
+}
+
+.cocktailFormImg {
+  width: 130px;
+  height: 180px;
+  position: absolute;
+  transform: translate(40px, 30px);
+}
+
+.cocktailFormIngredients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: space-between;
+}
