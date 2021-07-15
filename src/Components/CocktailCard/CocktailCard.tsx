@@ -1,7 +1,8 @@
 import React /*useContext*/ from "react";
 import "./CocktailCard.scss";
 //import { CocktailContext } from "../../App";
-import { Icocktail, Cocktail } from "../../model/Cocktail";
+import { Icocktail } from "../../model/Cocktail";
+import Favorite from "@material-ui/icons/Favorite";
 
 interface IcocktailCard {
   cocktail: Icocktail;
