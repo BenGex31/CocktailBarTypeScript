@@ -1,6 +1,6 @@
-import React /*useContext*/ from "react";
+import React, { useContext } from "react";
 import "./CocktailCard.scss";
-//import { CocktailContext } from "../../App";
+import { CocktailContext } from "../../App";
 import { Icocktail } from "../../model/Cocktail";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
@@ -12,13 +12,26 @@ interface IcocktailCard {
 }
 
 export function CocktailCard(props: IcocktailCard): JSX.Element {
+  const [cocktails, setCocktails] = useContext(CocktailContext);
   return (
     <div className="cocktailCardContainer">
       <Checkbox
+        onClick={() => {
+          const cocktailToChangeIndex = cocktails.findIndex((cocktail) => {
+            return cocktail.name === props.cocktail.name;
+          });
+          const cocktailUpdated = [...cocktails];
+          cocktailUpdated[cocktailToChangeIndex] = {
+            ...props.cocktail,
+            liked: !props.cocktail.liked
+          };
+          setCocktails(cocktailUpdated);
+        }}
         style={{ position: "absolute", right: "10px" }}
         icon={<FavoriteBorder />}
         checkedIcon={<Favorite />}
         name="checkedH"
+        checked={props.cocktail.liked}
       />
       <div
         className="cocktailCard"
