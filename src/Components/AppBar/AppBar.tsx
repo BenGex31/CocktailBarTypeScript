@@ -6,21 +6,22 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 
 interface IAppBar {
   filter: Function;
+  likeFilter: Function;
 }
 
 export function AppBar(props: IAppBar) {
-  const [likeFilter, setLikeFilter] = useState(false);
+  const [like, setLike] = useState(false);
   return (
     <div className="AppBar">
       <h1>Cocktail Bar</h1>
       <div>
         <Checkbox
-          onClick={() => setLikeFilter(!likeFilter)}
+          onClick={() => setLike(!like)}
           style={{ marginRight: "80px" }}
           icon={<FavoriteBorder />}
           checkedIcon={<Favorite />}
           name="checkedH"
-          checked={likeFilter}
+          checked={like}
         />
         <input
           placeholder="Search..."
