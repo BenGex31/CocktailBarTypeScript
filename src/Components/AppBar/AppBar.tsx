@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AppBar.css";
 import Checkbox from "@material-ui/core/Checkbox";
 import Favorite from "@material-ui/icons/Favorite";
@@ -9,22 +9,26 @@ interface IAppBar {
 }
 
 export function AppBar(props: IAppBar) {
+  const [likeFilter, setLikeFilter] = useState(false);
   return (
     <div className="AppBar">
       <h1>Cocktail Bar</h1>
-      <Checkbox
-        //style={{ position: "absolute", right: "10px" }}
-        icon={<FavoriteBorder />}
-        checkedIcon={<Favorite />}
-        name="checkedH"
-        //checked={props.cocktail.liked}
-      />
-      <input
-        placeholder="Search..."
-        onChange={(event) => {
-          props.filter(event.target.value);
-        }}
-      />
+      <div>
+        <Checkbox
+          onClick={() => setLikeFilter(!likeFilter)}
+          style={{ marginRight: "80px" }}
+          icon={<FavoriteBorder />}
+          checkedIcon={<Favorite />}
+          name="checkedH"
+          checked={likeFilter}
+        />
+        <input
+          placeholder="Search..."
+          onChange={(event) => {
+            props.filter(event.target.value);
+          }}
+        />
+      </div>
     </div>
   );
 }
