@@ -29,10 +29,18 @@ export default function App() {
         );
   };
 
+  const likeFilter = (like: boolean) => {
+    if (like) {
+      setCocktails(cocktails.filter((cocktail) => cocktail.liked === true));
+    } else {
+      setCocktails(cocktailList);
+    }
+  };
+
   return (
     <CocktailContext.Provider value={[cocktails, setCocktails]}>
       <div className="App">
-        <AppBar filter={handleSearch} />
+        <AppBar filter={handleSearch} likeFilter={likeFilter} />
         {cocktails.map((cocktail) => (
           <CocktailCard cocktail={cocktail} openForm={setCocktailOpen} />
         ))}
