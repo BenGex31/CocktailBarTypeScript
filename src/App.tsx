@@ -14,26 +14,33 @@ export const CocktailContext = React.createContext<[Icocktail[], Function]>([
 
 export default function App() {
   const [cocktails, setCocktails] = useState<Icocktail[]>(cocktailList);
+  const [cocktailDisplayed, setCocktailDisplayed] = useState<Icocktail[]>(
+    cocktailList
+  );
   const [cocktailOpen, setCocktailOpen] = useState<Icocktail | undefined>(
     undefined
   );
 
   const handleSearch = (text: string): void => {
     console.log(text);
-    text === ""
-      ? setCocktails(cocktailList)
-      : setCocktails(
-          cocktailList.filter((cocktail) =>
-            cocktail.name.toLowerCase().startsWith(text.toLowerCase())
-          )
-        );
+    if (text === "") {
+      setCocktails(cocktailList);
+    } else {
+      setCocktails(
+        cocktailList.filter((cocktail) =>
+          cocktail.name.toLowerCase().startsWith(text.toLowerCase())
+        )
+      );
+    }
   };
 
   const likeFilter = (like: boolean) => {
     if (like) {
-      setCocktails(cocktails.filter((cocktail) => cocktail.liked === true));
+      setCocktailDisplayed(
+        cocktails.filter((cocktail) => cocktail.liked === true)
+      );
     } else {
-      setCocktails(cocktailList);
+      setCocktailDisplayed(cocktails);
     }
   };
 
@@ -41,7 +48,7 @@ export default function App() {
     <CocktailContext.Provider value={[cocktails, setCocktails]}>
       <div className="App">
         <AppBar filter={handleSearch} likeFilter={likeFilter} />
-        {cocktails.map((cocktail) => (
+        {cocktailDisplayed.map((cocktail) => (
           <CocktailCard cocktail={cocktail} openForm={setCocktailOpen} />
         ))}
         <Modal
