@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./styles.css";
 import Modal from "react-modal";
 import { CocktailForm } from "./Components/CocktailForm/CocktailForm";
@@ -20,6 +20,19 @@ export default function App() {
   const [cocktailOpen, setCocktailOpen] = useState<Icocktail | undefined>(
     undefined
   );
+
+  useEffect(() => {
+    const newCocktailDisplayed: Icocktail[] = [];
+    cocktailDisplayed.forEach((cocktail) => {
+      const oneCocktail = cocktails.find(
+        (cocktailFind) => cocktailFind.name === cocktail.name
+      );
+      if (oneCocktail !== undefined) {
+        newCocktailDisplayed.push(oneCocktail);
+      }
+    });
+    setCocktailDisplayed(newCocktailDisplayed);
+  }, [cocktails]);
 
   const handleSearch = (text: string): void => {
     console.log(text);
