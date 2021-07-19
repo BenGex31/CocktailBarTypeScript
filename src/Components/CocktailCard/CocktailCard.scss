@@ -3,6 +3,7 @@
   height: 23em;
   width: 15em;
   border: 1px solid black;
+  border-radius: 8px;
   background-color: #d2d5cd;
   margin: 3px;
   position: relative;
@@ -26,6 +27,8 @@
 .cocktailImg {
   width: 7em;
   height: 10em;
+  border-radius: 8px;
+box-shadow: 0px 0px 7px 1px #8ec1e9;
 }
 
 .cocktailName {
